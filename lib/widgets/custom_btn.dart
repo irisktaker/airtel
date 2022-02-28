@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 
-import '/constantces.dart';
+import '../utilities/constantces.dart';
 
 class CustomBtn extends StatelessWidget {
   void Function()? onPressed;
@@ -32,7 +32,7 @@ class CustomBtn extends StatelessWidget {
           padding: const EdgeInsets.symmetric(vertical: 16),
           primary: primary,
           onPrimary: onPrimary,
-          side: (onPrimary == AppColors.color.red)
+          side: (primary == AppColors.color.red)
               ? BorderSide.none
               : BorderSide(
                   color: AppColors.color.white,

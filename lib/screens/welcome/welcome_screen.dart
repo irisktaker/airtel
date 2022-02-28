@@ -1,17 +1,36 @@
 import 'package:flutter/material.dart';
 
-import '../../widgets/show_bottom_sheet_for_languages.dart';
+import '../languages/languages.dart';
+import '../login/login_screen_bloc.dart';
+import '../../utilities/constantces.dart';
+import '../register/register_screen.dart';
+import '../login/login_screen.dart';
 import '/widgets/custom_btn.dart';
-import '/constantces.dart';
 
-class WelcomeScreen extends StatelessWidget {
+class WelcomeScreen extends StatefulWidget {
   const WelcomeScreen({Key? key}) : super(key: key);
+
+  @override
+  State<WelcomeScreen> createState() => _WelcomeScreenState();
+}
+
+class _WelcomeScreenState extends State<WelcomeScreen> {
+
+  final LoginScreenBloc _loginScreenBloc = LoginScreenBloc();
+
+  @override
+  void initState() {
+    super.initState();
+
+    _loginScreenBloc.getUserLoginFromSecureStorage();
+  }
 
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
 
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: Container(
         width: size.width,
         height: size.height,
@@ -55,15 +74,19 @@ class WelcomeScreen extends StatelessWidget {
               const Spacer(flex: 2),
               CustomBtn(
                 size: size,
-                onPressed: () {},
+                onPressed: () {
+                  SignUpScreen().showBottomSheetForSignUp(context);
+                },
                 text: "sign up",
-                primary: AppColors.color.red,
+                primary: const Color(0xFFD6001C),
                 onPrimary: AppColors.color.white,
               ),
               const SizedBox(height: 16),
               CustomBtn(
                 size: size,
-                onPressed: () {},
+                onPressed: () {
+                  LoginScreen().showBottomSheetForLogin(context);
+                },
                 text: "login",
                 primary: AppColors.color.white,
                 onPrimary: AppColors.color.red,
@@ -83,7 +106,7 @@ class WelcomeScreen extends StatelessWidget {
                   const SizedBox(width: 16),
                   GestureDetector(
                     onTap: () {
-                      ShowBottomSheetForLanguages().showBottomSheetForLanguages(context);
+                      ShowBottomSheetLanguages().showBottomSheetForLanguages(context);
                     },
                     child: Container(
                       width: 80,

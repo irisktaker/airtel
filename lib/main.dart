@@ -14,6 +14,7 @@ class MyApp extends StatelessWidget {
       title: 'Airtel',
       theme: ThemeData(
         primarySwatch: Colors.blue,
+        visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       home: const SplashScreen(),
     );

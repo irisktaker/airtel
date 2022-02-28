@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../widgets/show_bottom_sheet_for_languages.dart';
+import '/widgets/custom_btn.dart';
 import '/constantces.dart';
 
 class WelcomeScreen extends StatelessWidget {
@@ -24,7 +26,7 @@ class WelcomeScreen extends StatelessWidget {
         child: SafeArea(
           child: Column(
             children: [
-              const Spacer(flex: 3),
+              const Spacer(flex: 6),
               Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -32,7 +34,7 @@ class WelcomeScreen extends StatelessWidget {
                   Image.asset("assets/images/brandname.png"),
                 ],
               ),
-              const Spacer(flex: 3),
+              const Spacer(flex: 6),
               Text(
                 "Welcome",
                 style: TextStyle(
@@ -50,7 +52,7 @@ class WelcomeScreen extends StatelessWidget {
                   color: AppColors.color.white,
                 ),
               ),
-              const Spacer(flex: 1),
+              const Spacer(flex: 2),
               CustomBtn(
                 size: size,
                 onPressed: () {},
@@ -79,74 +81,35 @@ class WelcomeScreen extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(width: 16),
-                   GestureDetector(
-                     onTap: (){},
-                     child: Container(
-                       width: 80,
-                       padding: const EdgeInsets.symmetric(vertical: 6,),
-                       decoration: BoxDecoration(
-                         color: AppColors.color.darkGrey.withOpacity(0.4),
-                         borderRadius: BorderRadius.circular(16),
-                       ),
-                       child: Center(
-                         child: Text(
+                  GestureDetector(
+                    onTap: () {
+                      ShowBottomSheetForLanguages().showBottomSheetForLanguages(context);
+                    },
+                    child: Container(
+                      width: 80,
+                      padding: const EdgeInsets.symmetric(
+                        vertical: 6,
+                      ),
+                      decoration: BoxDecoration(
+                        color: AppColors.color.darkGrey.withOpacity(0.4),
+                        borderRadius: BorderRadius.circular(16),
+                      ),
+                      child: Center(
+                        child: Text(
                           "English",
                           style: TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.normal,
                             color: AppColors.color.white,
                           ),
-                                     ),
-                       ),
-                     ),
-                   ),
+                        ),
+                      ),
+                    ),
+                  ),
                 ],
               ),
             ],
           ),
-        ),
-      ),
-    );
-  }
-}
-
-class CustomBtn extends StatelessWidget {
-  void Function()? onPressed;
-  String text;
-  Color? primary = AppColors.color.red;
-  Color? onPrimary = AppColors.color.white;
-
-  CustomBtn({
-    Key? key,
-    required this.size,
-    required this.onPressed,
-    required this.text,
-    this.primary,
-    this.onPrimary,
-  }) : super(key: key);
-
-  final Size size;
-
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      width: size.width,
-      height: 48,
-      child: ElevatedButton(
-        onPressed: onPressed,
-        style: ElevatedButton.styleFrom(
-          padding: const EdgeInsets.symmetric(vertical: 16),
-          primary: primary,
-          onPrimary: onPrimary,
-          side: (onPrimary == AppColors.color.red)
-              ? BorderSide.none
-              : BorderSide(
-                  color: AppColors.color.white,
-                  width: 2,
-                ),
-        ),
-        child: Text(
-          text.toUpperCase(),
         ),
       ),
     );

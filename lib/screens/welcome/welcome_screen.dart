@@ -75,7 +75,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
               CustomBtn(
                 size: size,
                 onPressed: () {
-                  SignUpScreen().showBottomSheetForSignUp(context);
+                  RegisterScreen().showBottomSheetForRegister(context);
                 },
                 text: "sign up",
                 primary: const Color(0xFFD6001C),

@@ -12,9 +12,9 @@ Widget popularPlansCard(
   return Column(
     children: [
       Container(
-        width: size.width * 0.46,
+        width: size.width * 0.42,
         margin: const EdgeInsets.only(right: 10),
-        padding: const EdgeInsets.symmetric(horizontal: 12),
+        padding: const EdgeInsets.only(left: 10),
         decoration: BoxDecoration(
           color: AppColors.color.white,
           boxShadow: const [
@@ -29,27 +29,31 @@ Widget popularPlansCard(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const SizedBox(height: 28),
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.baseline,
-              textBaseline: TextBaseline.alphabetic,
-              children: [
-                Text(
-                  internetPackage,
-                  style: TextStyle(
-                    color: AppColors.color.blue,
-                    fontSize: 19,
+            SizedBox(
+              height: 20,
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.baseline,
+                textBaseline: TextBaseline.alphabetic,
+                children: [
+                  Text(
+                    internetPackage,
+                    style: TextStyle(
+                      color: AppColors.color.blue,
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
-                ),
-                const SizedBox(width: 6),
-                Text(
-                  "per day",
-                  overflow: TextOverflow.ellipsis,
-                  style: TextStyle(
-                    color: AppColors.color.blue,
-                    fontSize: 12,
+                  const SizedBox(width: 4),
+                  Text(
+                    "per day",
+                    style: TextStyle(
+                      color: AppColors.color.blue,
+                      fontSize: 11,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
             const SizedBox(height: 10),
             Row(

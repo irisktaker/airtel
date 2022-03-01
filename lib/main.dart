@@ -1,3 +1,4 @@
+import 'package:airtel/screens/toggle_bar/toggle_bar_screens.dart';
 import 'package:flutter/material.dart';
 import '/screens/splash/splash_screen.dart';
 
@@ -16,7 +17,8 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: const SplashScreen(),
+      // home: const SplashScreen(),
+      home: const ToggleBarScreens(),
     );
   }
 }

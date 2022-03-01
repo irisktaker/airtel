@@ -21,7 +21,6 @@ class RegisterScreen {
       isScrollControlled: true,
       constraints: BoxConstraints(
         maxHeight: size.height * 0.73,
-        // minHeight: size.height * 0.73,
       ),
       context: context,
       builder: (BuildContext context) {

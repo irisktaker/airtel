@@ -1,9 +1,10 @@
+import 'package:airtel/screens/usage/usage_details_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:circular_chart_flutter/circular_chart_flutter.dart';
 
 import '/widgets/new_offers.dart';
 import '/utilities/constantces.dart';
 import '/singleton/singleton.dart';
-import '/widgets/popular_plans_card.dart';
 
 class UsageScreen extends StatefulWidget {
   const UsageScreen({Key? key}) : super(key: key);
@@ -12,8 +13,19 @@ class UsageScreen extends StatefulWidget {
   State<UsageScreen> createState() => _UsageScreenState();
 }
 
+int index = 0;
+
 class _UsageScreenState extends State<UsageScreen> {
-  int currentIndex = 0;
+  final GlobalKey<AnimatedCircularChartState> _chartKey =
+      GlobalKey<AnimatedCircularChartState>();
+
+  double dataUsed = Singleton.instance.internetData[index].dataUsed /
+      Singleton.instance.internetData[index].totalData *
+      100;
+
+  double availableData = Singleton.instance.internetData[index].availableData /
+      Singleton.instance.internetData[index].totalData *
+      100;
 
   @override
   Widget build(BuildContext context) {
@@ -21,181 +33,292 @@ class _UsageScreenState extends State<UsageScreen> {
 
     return Scaffold(
       backgroundColor: const Color.fromARGB(255, 215, 237, 250),
-      body: SafeArea(
-        child: Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: DefaultTextStyle(
-                style: TextStyle(
-                  color: AppColors.color.darkGrey,
-                  fontSize: 16,
-                  fontWeight: FontWeight.w400,
-                  // fontFamily: '',
+      body: ListView(
+        children: [
+          Container(
+            width: size.width,
+            height: 40,
+            margin: const EdgeInsets.only(top: 16),
+            color: const Color.fromARGB(200, 165, 238, 220),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  "Your internet speed is ",
+                  style: TextStyle(
+                    color: AppColors.color.darkGrey,
+                  ),
                 ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const Text("Popular plans"),
-                    const SizedBox(height: 16),
-                    SizedBox(
-                      height: 138,
-                      child: ListView.builder(
-                        scrollDirection: Axis.horizontal,
-                        itemCount: Singleton.instance.popularPlans.length,
-                        itemBuilder: (context, index) {
-                          return popularPlansCard(
-                            size,
-                            internetPackage: Singleton
-                                .instance.popularPlans[index].internetPackage,
-                            validationCode: Singleton
-                                .instance.popularPlans[index].validationCode,
-                            validity:
-                                Singleton.instance.popularPlans[index].validity,
-                            onPress:
-                                Singleton.instance.popularPlans[index].onPress,
-                          );
-                        },
-                      ),
-                    ),
-                    newOffersCard(size),
-                  ],
+                const Text(
+                  "Good",
+                  style: TextStyle(
+                    color: Color.fromARGB(255, 15, 211, 15),
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
-              ),
+                Text(
+                  " now!",
+                  style: TextStyle(
+                    color: AppColors.color.darkGrey,
+                  ),
+                ),
+              ],
             ),
-            Expanded(
-              child: ListView(
-                children: [
-                  SizedBox(
-                    height: 40,
-                    child: Container(
-                      width: size.width,
-                      color: AppColors.color.white,
-                      child: ListView.builder(
-                        scrollDirection: Axis.horizontal,
-                        itemCount: months.length,
-                        itemBuilder: ((context, index) {
-                          return Container(
-                            margin: const EdgeInsets.symmetric(
-                                vertical: 10, horizontal: 16),
-                            child: InkWell(
-                              onTap: () {
-                                setState(() {
-                                  currentIndex = index;
-                                  print(index);
-                                });
-                              },
-                              child: Text(
-                                months[index],
-                                style: TextStyle(
-                                  color: currentIndex == index
-                                      ? AppColors.color.red
-                                      : AppColors.color.grey,
-                                ),
-                              ),
-                            ),
-                          );
-                        }),
-                      ),
+          ),
+          Container(
+            width: size.width,
+            height: size.height,
+            padding: const EdgeInsets.all(16),
+            child: ListView(
+              children: [
+                Container(
+                  width: size.width,
+                  height: size.height * 0.45,
+                  decoration: BoxDecoration(
+                    color: AppColors.color.white,
+                    border: Border.all(
+                      color: const Color.fromARGB(255, 15, 211, 15),
+                      width: 2,
                     ),
                   ),
-                  Expanded(
-                    child: Container(
-                      width: size.width,
-                      height: size.height * 0.38,
-                      color: AppColors.color.white,
-                      padding: const EdgeInsets.only(bottom: 16),
-                      child: ListView.builder(
-                        itemCount: Singleton.instance.popularPlans.length,
-                        itemBuilder: (context, index) {
-                          return Column(
-                            children: [
-                              Container(
-                                width: size.width,
-                                margin: const EdgeInsets.symmetric(
-                                    horizontal: 16, vertical: 10),
-                                color: AppColors.color.white,
-                                child: Row(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      const SizedBox(height: 36),
+                      Container(
+                        padding: const EdgeInsets.all(3),
+                        decoration: BoxDecoration(
+                          border: Border.all(
+                            color: Colors.blue[300]!,
+                            width: 2,
+                          ),
+                        ),
+                        child: Container(
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: AppColors.color.blue.withOpacity(0.1),
+                          ),
+                          child: AnimatedCircularChart(
+                            key: _chartKey,
+                            size: const Size(220.0, 220.0),
+                            initialChartData: [
+                              CircularStackEntry(
+                                [
+                                  CircularSegmentEntry(
+                                    dataUsed,
+                                    AppColors.color.red,
+                                    rankKey: 'completed',
+                                  ),
+                                  CircularSegmentEntry(
+                                    availableData,
+                                    AppColors.color.white,
+                                    rankKey: 'remaining',
+                                  ),
+                                ],
+                                rankKey: 'progress',
+                              ),
+                            ],
+                            chartType: CircularChartType.Radial,
+                            edgeStyle: SegmentEdgeStyle.round,
+                            percentageValues: true,
+                            holeLabel: "${dataUsed.toStringAsFixed(0)}%",
+                            holeRadius: 70,
+                            labelStyle: TextStyle(
+                              color: AppColors.color.red,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 24.0,
+                            ),
+                          ),
+                        ),
+                      ),
+                      const SizedBox(height: 26),
+                      Text(
+                        "Renews in 4 Hrs",
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 16,
+                          color: AppColors.color.darkGrey,
+                        ),
+                      ),
+                      TextButton(
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const UsageDetailsScreen(),
+                            ),
+                          );
+                        },
+                        child: Text(
+                          "Tap to view detailed usage details >>",
+                          style: TextStyle(
+                            fontSize: 12,
+                            color: AppColors.color.red.withOpacity(0.70),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Container(
+                  margin: const EdgeInsets.symmetric(vertical: 16),
+                  height: size.height * 0.18,
+                  width: size.width - 32,
+                  child: ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    itemCount: Singleton.instance.internetData.length,
+                    itemBuilder: ((context, index) {
+                      return Column(
+                        children: [
+                          Container(
+                            width: size.width - 32,
+                            height: size.height * 0.18,
+                            margin: const EdgeInsets.only(right: 16),
+                            padding: const EdgeInsets.all(16),
+                            decoration: BoxDecoration(
+                              color: AppColors.color.white,
+                              boxShadow: const [
+                                BoxShadow(
+                                  color: Colors.grey,
+                                  offset: Offset(0.0, 1.0), //(x,y)
+                                  blurRadius: 3.0,
+                                ),
+                              ],
+                            ),
+                            child: Column(
+                              children: [
+                                Row(
                                   children: [
-                                    Container(
-                                      width: 60,
-                                      height: 60,
-                                      color:
-                                          AppColors.color.grey.withOpacity(0.1),
-                                      child: Column(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.center,
-                                        children: [
-                                          Text(
-                                            "${Singleton.instance.popularPlans[index].internetSpeed}",
-                                            style: TextStyle(
-                                              color: AppColors.color.blue,
-                                              fontSize: 16,
-                                              fontWeight: FontWeight.bold,
-                                            ),
-                                          ),
-                                          const SizedBox(height: 2),
-                                          Text(
-                                            "Mb/s",
-                                            style: TextStyle(
-                                              color: AppColors.color.blue,
-                                              fontSize: 12,
-                                              fontWeight: FontWeight.bold,
-                                            ),
-                                          ),
-                                        ],
-                                      ),
+                                    Text(
+                                      Singleton
+                                          .instance.internetData[index].day,
                                     ),
-                                    const SizedBox(width: 12),
-                                    Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Text(Singleton.instance.popularPlans[index].internetPackage),
-                                        const SizedBox(height: 10),
-                                        Text(Singleton.instance.popularPlans[index].validationCode),
-                                      ],
+                                    Text(
+                                      Singleton
+                                          .instance.internetData[index].date,
+                                    ),
+                                    Text(
+                                      Singleton
+                                          .instance.internetData[index].time,
                                     ),
                                     const Spacer(),
-                                    TextButton(
-                                      onPressed: (){},
-                                      child: Text(
-                                        "buy now >>",
-                                        style: TextStyle(
-                                          color: AppColors.color.darkGrey,
-                                          fontSize: 12,
-                                          fontWeight: FontWeight.bold,
-                                        ),
+                                    CircleAvatar(
+                                      backgroundColor:
+                                          AppColors.color.red.withOpacity(0.3),
+                                      child: Image.asset(
+                                        "assets/icons/calender.png",
+                                        scale: 0.8,
                                       ),
+                                      radius: 16,
                                     ),
                                   ],
                                 ),
-                              ),
-                              const Divider(),
-                            ],
-                          );
-                        },
-                      ),
-                    ),
+                                const SizedBox(height: 4),
+                                const Divider(),
+                                const SizedBox(height: 10),
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceEvenly,
+                                  children: [
+                                    Column(
+                                      children: [
+                                        Text(
+                                          "Total data",
+                                          style: TextStyle(
+                                            fontSize: 12,
+                                            color: AppColors.color.red,
+                                          ),
+                                        ),
+                                        const SizedBox(height: 10),
+                                        Text(
+                                          "${Singleton.instance.internetData[index].totalData} GB",
+                                          style: TextStyle(
+                                            fontSize: 20,
+                                            color: AppColors.color.red,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                    Container(
+                                      width: 1,
+                                      height: 50,
+                                      color:
+                                          AppColors.color.grey.withOpacity(0.3),
+                                    ),
+                                    Column(
+                                      children: [
+                                        Text(
+                                          "Data used",
+                                          style: TextStyle(
+                                            fontSize: 12,
+                                            color: AppColors.color.blue,
+                                          ),
+                                        ),
+                                        const SizedBox(height: 10),
+                                        Text(
+                                          "${Singleton.instance.internetData[index].dataUsed} GB",
+                                          style: TextStyle(
+                                            fontSize: 20,
+                                            color: AppColors.color.blue,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                    Container(
+                                      width: 1,
+                                      height: 50,
+                                      color:
+                                          AppColors.color.grey.withOpacity(0.3),
+                                    ),
+                                    Column(
+                                      children: [
+                                        const Text(
+                                          "Available data",
+                                          style: TextStyle(
+                                            fontSize: 12,
+                                            color: Colors.green,
+                                          ),
+                                        ),
+                                        const SizedBox(height: 10),
+                                        Text(
+                                          "${Singleton.instance.internetData[index].availableData} GB",
+                                          style: const TextStyle(
+                                            fontSize: 20,
+                                            color: Colors.green,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      );
+                    }),
                   ),
-                ],
-              ),
+                ),
+                Container(
+                  width: size.width,
+                  height: size.height * 0.18,
+                  decoration: BoxDecoration(
+                    color: AppColors.color.red,
+                    boxShadow: const [
+                      BoxShadow(
+                        color: Colors.grey,
+                        offset: Offset(0.0, 1.0), //(x,y)
+                        blurRadius: 3.0,
+                      ),
+                    ],
+                  ),
+                ),
+                newOffersCard(size),
+              ],
             ),
-            const SizedBox(height: 36),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
-
-  List<String> months = [
-    "1 month",
-    "3 months",
-    "6 months",
-    "8 months",
-    "10 months",
-    "12 months",
-  ];
 }

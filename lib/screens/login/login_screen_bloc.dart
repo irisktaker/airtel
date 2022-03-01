@@ -1,3 +1,4 @@
+import 'package:airtel/screens/toggle_bar/toggle_bar_screens.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
@@ -16,11 +17,11 @@ class LoginScreenBloc {
     await storage.write(key: "phoneNumber", value: phoneNumberController.text);
     await storage.write(key: "password", value: passwordController.text);
 
-    // if yes or not navigate to UsageScreen
+    // if yes or not navigate to ToggleBarScreens
     Navigator.pushReplacement(
       context,
       MaterialPageRoute(
-        builder: (context) => const UsageScreen(),
+        builder: (context) => const ToggleBarScreens(),
       ),
     );
   }

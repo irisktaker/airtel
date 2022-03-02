@@ -81,7 +81,15 @@ class Singleton {
       time: "7:25 PM",
       totalData: 15.0,
       dataUsed: 7.5,
-      availableData: 12.5,
+      availableData: 7.5,
+    ),
+     InternetData(
+      day: "Sunday, ",
+      date: "Aug 31 - ",
+      time: "7:25 PM",
+      totalData: 25.0,
+      dataUsed: 19.5,
+      availableData: 5.5,
     ),
   ];
 }

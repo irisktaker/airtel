@@ -1,10 +1,10 @@
-import 'package:airtel/screens/usage/usage_details_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:circular_chart_flutter/circular_chart_flutter.dart';
 
 import '/widgets/new_offers.dart';
 import '/utilities/constantces.dart';
 import '/singleton/singleton.dart';
+import '/screens/usage/usage_details_screen.dart';
 
 class UsageScreen extends StatefulWidget {
   const UsageScreen({Key? key}) : super(key: key);
@@ -145,7 +145,7 @@ class _UsageScreenState extends State<UsageScreen> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => const UsageDetailsScreen(),
+                              builder: (context) => UsageDetailsScreen(),
                             ),
                           );
                         },
@@ -302,6 +302,7 @@ class _UsageScreenState extends State<UsageScreen> {
                 Container(
                   width: size.width,
                   height: size.height * 0.18,
+                  padding: const EdgeInsets.all(16),
                   decoration: BoxDecoration(
                     color: AppColors.color.red,
                     boxShadow: const [
@@ -309,6 +310,167 @@ class _UsageScreenState extends State<UsageScreen> {
                         color: Colors.grey,
                         offset: Offset(0.0, 1.0), //(x,y)
                         blurRadius: 3.0,
+                      ),
+                    ],
+                  ),
+                  child: Row(
+                    children: [
+                      SizedBox(
+                        width: size.width * 0.50,
+                        child: Column(
+                          children: [
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Row(
+                                  crossAxisAlignment:
+                                      CrossAxisAlignment.baseline,
+                                  textBaseline: TextBaseline.alphabetic,
+                                  children: [
+                                    const SizedBox(width: 20),
+                                    Text(
+                                      "LKR449",
+                                      style: TextStyle(
+                                        fontSize: 18,
+                                        color: AppColors.color.white,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                    const SizedBox(width: 8),
+                                    Text(
+                                      "plan",
+                                      style: TextStyle(
+                                        fontSize: 14,
+                                        color: AppColors.color.white,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                const SizedBox(height: 6),
+                                Padding(
+                                  padding: const EdgeInsets.only(left: 10),
+                                  child: Text(
+                                    "expires on 01 jan 2020",
+                                    style: TextStyle(
+                                      fontSize: 12,
+                                      color: AppColors.color.white
+                                          .withOpacity(0.60),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                            const SizedBox(height: 20),
+                            Column(
+                              children: [
+                                Row(
+                                  children: [
+                                    Container(
+                                      width: 5,
+                                      height: 5,
+                                      decoration: BoxDecoration(
+                                        shape: BoxShape.circle,
+                                        color: AppColors.color.white,
+                                      ),
+                                    ),
+                                    const SizedBox(width: 10),
+                                    Text(
+                                      "10 GB data per day",
+                                      style: TextStyle(
+                                        fontSize: 11,
+                                        color: AppColors.color.white,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                            const SizedBox(height: 10),
+                            Column(
+                              children: [
+                                Row(
+                                  children: [
+                                    Container(
+                                      width: 5,
+                                      height: 5,
+                                      decoration: BoxDecoration(
+                                        shape: BoxShape.circle,
+                                        color: AppColors.color.white,
+                                      ),
+                                    ),
+                                    const SizedBox(width: 10),
+                                    Text(
+                                      "12 PM - 2 PM unlimited data",
+                                      style: TextStyle(
+                                        fontSize: 11,
+                                        color: AppColors.color.white,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+
+                      ///
+                      ///
+
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          Image.asset(
+                            "assets/images/sale.png",
+                            width: 70,
+                            height: 50,
+                            scale: 0.8,
+                          ),
+                          Row(
+                            crossAxisAlignment: CrossAxisAlignment.baseline,
+                            textBaseline: TextBaseline.alphabetic,
+                            children: [
+                              Text(
+                                "25+",
+                                style: TextStyle(
+                                  fontSize: 14,
+                                  color: AppColors.color.white,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              const SizedBox(width: 8),
+                              Text(
+                                "surprising plans",
+                                style: TextStyle(
+                                  fontSize: 12,
+                                  color: AppColors.color.white,
+                                ),
+                              ),
+                            ],
+                          ),
+                          TextButton(
+                            style: ButtonStyle(
+                              padding: MaterialStateProperty.all(
+                                const EdgeInsets.symmetric(
+                                  horizontal: 34,
+                                ),
+                              ),
+                              backgroundColor: MaterialStateProperty.all(
+                                AppColors.color.white,
+                              ),
+                              foregroundColor: MaterialStateProperty.all(
+                                AppColors.color.red,
+                              ),
+                            ),
+                            onPressed: () {},
+                            child: const Text(
+                              "Other Plans",
+                              style: TextStyle(
+                                fontSize: 12,
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
                     ],
                   ),

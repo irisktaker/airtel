@@ -17,8 +17,8 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      // home: const SplashScreen(),
-      home: const ToggleBarScreens(),
+      home: const SplashScreen(),
+      // home: const ToggleBarScreens(),
     );
   }
 }

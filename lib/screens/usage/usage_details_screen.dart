@@ -1,19 +1,16 @@
+// ignore_for_file: use_key_in_widget_constructors
+
 import 'package:flutter/material.dart';
 
 import '/utilities/constantces.dart';
 import '/singleton/singleton.dart';
 
-class UsageDetailsScreen extends StatefulWidget {
-  const UsageDetailsScreen({Key? key}) : super(key: key);
+class UsageDetailsScreen extends StatelessWidget {
 
-  @override
-  _UsageDetailsScreenState createState() => _UsageDetailsScreenState();
-}
-
-class _UsageDetailsScreenState extends State<UsageDetailsScreen> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
+
     return Scaffold(
       backgroundColor: const Color.fromARGB(255, 215, 237, 250),
       appBar: AppBar(
@@ -181,25 +178,22 @@ class _UsageDetailsScreenState extends State<UsageDetailsScreen> {
                             children: [
                               Container(
                                 height: 7,
-                                width: size.width *
+                                width: 
+                                (size.width - 64 ) *
                                     Singleton
                                         .instance.internetData[index].dataUsed /
                                     Singleton
-                                        .instance.internetData[index].totalData,
+                                        .instance.internetData[index].totalData ,
                                 decoration: BoxDecoration(
                                   color: AppColors.color.yellow,
                                 ),
                               ),
-                              Container(
-                                height: 7,
-                                width: (size.width - 64) -
-                                    size.width *
-                                        Singleton.instance.internetData[index]
-                                            .dataUsed /
-                                        Singleton.instance.internetData[index]
-                                            .totalData,
-                                decoration: BoxDecoration(
-                                  color: AppColors.color.pink,
+                              Expanded(
+                                child: Container(
+                                  height: 7,
+                                  decoration: BoxDecoration(
+                                    color: AppColors.color.pink,
+                                  ),
                                 ),
                               ),
                             ],

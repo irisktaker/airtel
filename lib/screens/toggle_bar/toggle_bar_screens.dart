@@ -1,10 +1,11 @@
+import 'package:flutter/material.dart';
+
 import '../modem/modem_screen.dart';
 import '../profile/profile_screen.dart';
 import '../recharge/recharge_screen.dart';
 import '../usage/usage_screen.dart';
-import 'package:airtel/utilities/constantces.dart';
-import 'package:flutter/material.dart';
 
+import '/utilities/constantces.dart';
 import '/widgets/custom_app_bar.dart';
 
 class ToggleBarScreens extends StatefulWidget {
@@ -52,6 +53,7 @@ class _ToggleBarScreensState extends State<ToggleBarScreens> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
+
     return Scaffold(
       appBar: customAppBar(context),
       body: _pages[_selectedPageIndex]['page'],

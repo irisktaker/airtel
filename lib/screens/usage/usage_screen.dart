@@ -100,7 +100,7 @@ class _UsageScreenState extends State<UsageScreen> {
                           ),
                           child: AnimatedCircularChart(
                             key: _chartKey,
-                            size: const Size(220.0, 220.0),
+                            size: const Size(200.0, 200.0),
                             initialChartData: [
                               CircularStackEntry(
                                 [
@@ -162,7 +162,7 @@ class _UsageScreenState extends State<UsageScreen> {
                 ),
                 Container(
                   margin: const EdgeInsets.symmetric(vertical: 16),
-                  height: size.height * 0.18,
+                  height: size.height * 0.19,
                   width: size.width - 32,
                   child: ListView.builder(
                     scrollDirection: Axis.horizontal,
@@ -172,7 +172,7 @@ class _UsageScreenState extends State<UsageScreen> {
                         children: [
                           Container(
                             width: size.width - 32,
-                            height: size.height * 0.18,
+                            height: size.height * 0.19,
                             margin: const EdgeInsets.only(right: 16),
                             padding: const EdgeInsets.all(16),
                             decoration: BoxDecoration(
@@ -301,7 +301,7 @@ class _UsageScreenState extends State<UsageScreen> {
                 ),
                 Container(
                   width: size.width,
-                  height: size.height * 0.18,
+                  height: size.height * 0.19,
                   padding: const EdgeInsets.all(16),
                   decoration: BoxDecoration(
                     color: AppColors.color.red,

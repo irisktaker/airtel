@@ -20,7 +20,7 @@ class _ModemScreenState extends State<ModemScreen> {
         children: [
           Container(
             width: size.width,
-            height: size.height * 0.46,
+            height: size.height * 0.47,
             margin: const EdgeInsets.all(16),
             padding: const EdgeInsets.all(16),
             decoration: BoxDecoration(
@@ -78,14 +78,17 @@ class _ModemScreenState extends State<ModemScreen> {
                           ),
                         ),
                         const Spacer(),
-                        CircleAvatar(
-                          backgroundColor:
-                              AppColors.color.red.withOpacity(0.20),
-                          radius: 14,
-                          child: Icon(
-                            Icons.replay,
-                            size: 20,
-                            color: AppColors.color.red,
+                        InkWell(
+                          onTap: () {},
+                          child: CircleAvatar(
+                            backgroundColor:
+                                AppColors.color.red.withOpacity(0.20),
+                            radius: 14,
+                            child: Icon(
+                              Icons.replay,
+                              size: 20,
+                              color: AppColors.color.red,
+                            ),
                           ),
                         ),
                       ],
@@ -115,9 +118,11 @@ class _ModemScreenState extends State<ModemScreen> {
                       return Container(
                         padding: const EdgeInsets.all(10),
                         decoration: BoxDecoration(
-                          color: Singleton.instance.internetDetails[index].bgColor,
+                          color:
+                              Singleton.instance.internetDetails[index].bgColor,
                           border: Border.all(
-                            color: Singleton.instance.internetDetails[index].borderColor,
+                            color: Singleton
+                                .instance.internetDetails[index].borderColor,
                             width: 2,
                           ),
                           borderRadius: BorderRadius.circular(6),
@@ -128,7 +133,8 @@ class _ModemScreenState extends State<ModemScreen> {
                           children: [
                             Icon(
                               Singleton.instance.internetDetails[index].icon,
-                              color: Singleton.instance.internetDetails[index].foregroundColor,
+                              color: Singleton.instance.internetDetails[index]
+                                  .foregroundColor,
                               size: 35,
                             ),
                             Text(
@@ -144,16 +150,19 @@ class _ModemScreenState extends State<ModemScreen> {
                                       .instance.internetDetails[index].value
                                       .toString(),
                                   style: TextStyle(
-                                    color: Singleton.instance.internetDetails[index].foregroundColor,
-                                    fontSize: 20
-                                  ),
+                                      color: Singleton
+                                          .instance
+                                          .internetDetails[index]
+                                          .foregroundColor,
+                                      fontSize: 20),
                                 ),
                                 const SizedBox(width: 6),
                                 Text(
                                   Singleton.instance.internetDetails[index]
                                       .indicator,
                                   style: TextStyle(
-                                    color: Singleton.instance.internetDetails[index].foregroundColor,
+                                    color: Singleton.instance
+                                        .internetDetails[index].foregroundColor,
                                     fontSize: 20,
                                     fontWeight: FontWeight.bold,
                                   ),
@@ -173,6 +182,7 @@ class _ModemScreenState extends State<ModemScreen> {
             width: size.width,
             height: size.height * 0.32,
             padding: const EdgeInsets.all(16),
+            margin: const EdgeInsets.only(bottom: 16),
             decoration: BoxDecoration(
               color: AppColors.color.white,
             ),
@@ -283,7 +293,7 @@ class _ModemScreenState extends State<ModemScreen> {
                     ),
                   ),
                 ),
-                const Divider(height: 2),
+                const Divider(),
               ],
             ),
           ),

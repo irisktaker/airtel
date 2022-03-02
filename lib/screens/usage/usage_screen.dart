@@ -314,10 +314,12 @@ class _UsageScreenState extends State<UsageScreen> {
                     ],
                   ),
                   child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
                       SizedBox(
                         width: size.width * 0.50,
                         child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -416,9 +418,8 @@ class _UsageScreenState extends State<UsageScreen> {
 
                       ///
                       ///
-
                       Column(
-                        mainAxisAlignment: MainAxisAlignment.end,
+                        mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Image.asset(
                             "assets/images/sale.png",

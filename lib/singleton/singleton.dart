@@ -1,3 +1,4 @@
+import 'package:airtel/models/connected_devices.dart';
 import 'package:airtel/models/popular_plans.dart';
 
 import '../models/internet_data.dart';
@@ -83,13 +84,34 @@ class Singleton {
       dataUsed: 7.5,
       availableData: 7.5,
     ),
-     InternetData(
+    InternetData(
       day: "Sunday, ",
       date: "Aug 31 - ",
       time: "7:25 PM",
       totalData: 25.0,
       dataUsed: 19.5,
       availableData: 5.5,
+    ),
+  ];
+
+  List<ConnectedDevices> connectedDevices = [
+    ConnectedDevices(
+      image: "assets/images/iphone.png",
+      deviceType: "Mobile",
+      deviceName: "iPhone",
+      deviceId: "9518 6253 1223 DOXC",
+    ),
+    ConnectedDevices(
+      image: "assets/images/mac.png",
+      deviceType: "Laptop",
+      deviceName: "Mac Book",
+      deviceId: "6224 9544 1274 DOXC",
+    ),
+    ConnectedDevices(
+      image: "assets/images/iwatch.png",
+      deviceType: "Watch",
+      deviceName: "iWatch",
+      deviceId: "1265 7584 1264 DOXC",
     ),
   ];
 }

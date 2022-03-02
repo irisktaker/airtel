@@ -1,7 +1,10 @@
-import 'package:airtel/models/connected_devices.dart';
-import 'package:airtel/models/popular_plans.dart';
+import 'package:flutter/material.dart';
 
-import '../models/internet_data.dart';
+import '../utilities/constantces.dart';
+import '/models/connected_devices.dart';
+import '/models/popular_plans.dart';
+import '/models/internet_data.dart';
+import '/models/internet_details.dart';
 
 class Singleton {
   Singleton();
@@ -112,6 +115,48 @@ class Singleton {
       deviceType: "Watch",
       deviceName: "iWatch",
       deviceId: "1265 7584 1264 DOXC",
+    ),
+  ];
+
+  List<InternetDetails> internetDetails = [
+    InternetDetails(
+      icon: Icons.rss_feed,
+      text: "Signal strength",
+      value: 85,
+      indicator: "%",
+      bgColor: AppColors.color.red.withOpacity(0.2),
+      borderColor: AppColors.color.red.withOpacity(0.4),
+      foregroundColor: AppColors.color.red.withOpacity(0.8),
+    ),
+
+    InternetDetails(
+      icon: Icons.signal_wifi_0_bar,
+      text: "Ping rate",
+      value: 14,
+      indicator: "ms",
+      bgColor: AppColors.color.blue.withOpacity(0.2),
+      borderColor: AppColors.color.blue.withOpacity(0.4),
+      foregroundColor: AppColors.color.blue.withOpacity(0.8),
+    ),
+
+    InternetDetails(
+      icon: Icons.download_outlined,
+      text: "Download speed",
+      value: 210.8,
+      indicator: "mb/s",
+      bgColor: AppColors.color.white.withOpacity(0.2),
+      borderColor: AppColors.color.yellow.withOpacity(0.4),
+      foregroundColor: AppColors.color.yellow.withOpacity(0.8),
+    ),
+
+    InternetDetails(
+      icon: Icons.upload_file_outlined,
+      text: "Upload speed",
+      value: 11.8,
+      indicator: "mb/s",
+      bgColor: AppColors.color.pink.withOpacity(0.2),
+      borderColor: AppColors.color.pink.withOpacity(0.4),
+      foregroundColor: AppColors.color.pink.withOpacity(0.8),
     ),
   ];
 }

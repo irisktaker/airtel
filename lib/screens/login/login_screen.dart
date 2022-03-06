@@ -6,9 +6,6 @@ import '/widgets/custom_btn.dart';
 import '/utilities/constantces.dart';
 
 class LoginScreen {
-
-  // how to use initstate ??
-
   final LoginScreenBloc _bloc = LoginScreenBloc();
 
   Future showBottomSheetForLogin(BuildContext context) {

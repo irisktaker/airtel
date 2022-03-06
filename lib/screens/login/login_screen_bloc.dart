@@ -2,8 +2,6 @@ import 'package:airtel/screens/toggle_bar/toggle_bar_screens.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
-import '../usage/usage_screen.dart';
-
 class LoginScreenBloc {
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 

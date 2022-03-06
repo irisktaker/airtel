@@ -15,13 +15,12 @@ class WelcomeScreen extends StatefulWidget {
 }
 
 class _WelcomeScreenState extends State<WelcomeScreen> {
-
   final LoginScreenBloc _loginScreenBloc = LoginScreenBloc();
 
   @override
   void initState() {
     super.initState();
-
+    _loginScreenBloc.rememberMyLogin(context);
     _loginScreenBloc.getUserLoginFromSecureStorage();
   }
 
@@ -106,7 +105,8 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                   const SizedBox(width: 16),
                   GestureDetector(
                     onTap: () {
-                      ShowBottomSheetLanguages().showBottomSheetForLanguages(context);
+                      ShowBottomSheetLanguages()
+                          .showBottomSheetForLanguages(context);
                     },
                     child: Container(
                       width: 80,

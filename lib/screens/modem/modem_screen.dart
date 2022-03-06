@@ -131,11 +131,12 @@ class _ModemScreenState extends State<ModemScreen> {
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Icon(
+                            Image.asset(
                               Singleton.instance.internetDetails[index].icon,
                               color: Singleton.instance.internetDetails[index]
                                   .foregroundColor,
-                              size: 35,
+                              width: 24,
+                              height: 24,
                             ),
                             Text(
                               Singleton.instance.internetDetails[index].text,

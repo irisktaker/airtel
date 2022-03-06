@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 
 class InternetDetails {
-  IconData icon;
+  String icon;
   String text;
   double value;
   String indicator;

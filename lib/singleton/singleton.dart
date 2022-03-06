@@ -121,7 +121,7 @@ class Singleton {
 
   List<InternetDetails> internetDetails = [
     InternetDetails(
-      icon: Icons.rss_feed,
+      icon: "assets/icons/signal_strength.png",
       text: "Signal strength",
       value: 85,
       indicator: "%",
@@ -130,7 +130,7 @@ class Singleton {
       foregroundColor: AppColors.color.red.withOpacity(0.6),
     ),
     InternetDetails(
-      icon: Icons.signal_wifi_0_bar,
+      icon: "assets/icons/ping_rate.png",
       text: "Ping rate",
       value: 14,
       indicator: "ms",
@@ -139,7 +139,7 @@ class Singleton {
       foregroundColor: AppColors.color.blue.withOpacity(0.6),
     ),
     InternetDetails(
-      icon: Icons.download_outlined,
+      icon: "assets/icons/download.png",
       text: "Download speed",
       value: 210.8,
       indicator: "mb/s",
@@ -148,7 +148,7 @@ class Singleton {
       foregroundColor: AppColors.color.yellow.withOpacity(0.6),
     ),
     InternetDetails(
-      icon: Icons.upload_file_outlined,
+      icon: "assets/icons/upload.png",
       text: "Upload speed",
       value: 11.8,
       indicator: "mb/s",
@@ -162,27 +162,27 @@ class Singleton {
     ProfileData(
       image: "assets/images/billsandpay.png",
       description: "Bills & Payments",
-      onPress: (){},
+      onPress: () {},
     ),
     ProfileData(
       image: "assets/images/portalsettings.png",
       description: "Portal settings",
-      onPress: (){},
+      onPress: () {},
     ),
     ProfileData(
       image: "assets/images/broadband.png",
       description: "Broadband settings",
-      onPress: (){},
+      onPress: () {},
     ),
     ProfileData(
       image: "assets/images/support.png",
       description: "Support",
-      onPress: (){},
+      onPress: () {},
     ),
     ProfileData(
       image: "assets/images/signout.png",
       description: "Signout",
-      onPress: (){},
+      onPress: () {},
     ),
   ];
 }

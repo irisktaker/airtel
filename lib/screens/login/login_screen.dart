@@ -10,7 +10,6 @@ class LoginScreen {
 
   Future showBottomSheetForLogin(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    bool isTextFieldClicked = false;
 
     return showModalBottomSheet(
       backgroundColor: Colors.transparent,

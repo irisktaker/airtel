@@ -20,7 +20,6 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
   @override
   void initState() {
     super.initState();
-    _loginScreenBloc.rememberMyLogin(context);
     _loginScreenBloc.getUserLoginFromSecureStorage();
   }
 

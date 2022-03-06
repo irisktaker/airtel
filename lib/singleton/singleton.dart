@@ -1,7 +1,5 @@
-import 'package:flutter/material.dart';
-
-import '../models/profile_data.dart';
-import '../utilities/constantces.dart';
+import '/models/profile_data.dart';
+import '/utilities/constantces.dart';
 import '/models/connected_devices.dart';
 import '/models/popular_plans.dart';
 import '/models/internet_data.dart';

@@ -65,22 +65,22 @@ class _UsageScreenState extends State<UsageScreen> {
               ],
             ),
           ),
-          InkWell(
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => UsageDetailsScreen(),
-                ),
-              );
-            },
-            child: Container(
-              width: size.width,
-              height: size.height,
-              padding: const EdgeInsets.all(16),
-              child: ListView(
-                children: [
-                  Container(
+          Container(
+            width: size.width,
+            height: size.height,
+            padding: const EdgeInsets.all(16),
+            child: ListView(
+              children: [
+                InkWell(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => UsageDetailsScreen(),
+                      ),
+                    );
+                  },
+                  child: Container(
                     width: size.width,
                     height: size.height * 0.45,
                     decoration: BoxDecoration(
@@ -173,325 +173,325 @@ class _UsageScreenState extends State<UsageScreen> {
                       ],
                     ),
                   ),
-                  Container(
-                    margin: const EdgeInsets.symmetric(vertical: 16),
-                    height: size.height * 0.19,
-                    width: size.width - 32,
-                    child: ListView.builder(
-                      scrollDirection: Axis.horizontal,
-                      itemCount: Singleton.instance.internetData.length,
-                      itemBuilder: ((context, index) {
-                        return Column(
-                          children: [
-                            Container(
-                              width: size.width - 32,
-                              height: size.height * 0.19,
-                              margin: const EdgeInsets.only(right: 16),
-                              padding: const EdgeInsets.all(16),
-                              decoration: BoxDecoration(
-                                color: AppColors.color.white,
-                                boxShadow: const [
-                                  BoxShadow(
-                                    color: Colors.grey,
-                                    offset: Offset(0.0, 1.0), //(x,y)
-                                    blurRadius: 3.0,
-                                  ),
-                                ],
-                              ),
-                              child: Column(
-                                children: [
-                                  Row(
-                                    children: [
-                                      Text(
-                                        Singleton
-                                            .instance.internetData[index].day,
-                                      ),
-                                      Text(
-                                        Singleton
-                                            .instance.internetData[index].date,
-                                      ),
-                                      Text(
-                                        Singleton
-                                            .instance.internetData[index].time,
-                                      ),
-                                      const Spacer(),
-                                      CircleAvatar(
-                                        backgroundColor: AppColors.color.red
-                                            .withOpacity(0.3),
-                                        child: Image.asset(
-                                          "assets/icons/calender.png",
-                                          scale: 0.8,
-                                        ),
-                                        radius: 16,
-                                      ),
-                                    ],
-                                  ),
-                                  const SizedBox(height: 4),
-                                  const Divider(),
-                                  const SizedBox(height: 10),
-                                  Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceEvenly,
-                                    children: [
-                                      Column(
-                                        children: [
-                                          Text(
-                                            "Total data",
-                                            style: TextStyle(
-                                              fontSize: 12,
-                                              color: AppColors.color.red,
-                                            ),
-                                          ),
-                                          const SizedBox(height: 10),
-                                          Text(
-                                            "${Singleton.instance.internetData[index].totalData} GB",
-                                            style: TextStyle(
-                                              fontSize: 20,
-                                              color: AppColors.color.red,
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                      Container(
-                                        width: 1,
-                                        height: 50,
-                                        color: AppColors.color.grey
-                                            .withOpacity(0.3),
-                                      ),
-                                      Column(
-                                        children: [
-                                          Text(
-                                            "Data used",
-                                            style: TextStyle(
-                                              fontSize: 12,
-                                              color: AppColors.color.blue,
-                                            ),
-                                          ),
-                                          const SizedBox(height: 10),
-                                          Text(
-                                            "${Singleton.instance.internetData[index].dataUsed} GB",
-                                            style: TextStyle(
-                                              fontSize: 20,
-                                              color: AppColors.color.blue,
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                      Container(
-                                        width: 1,
-                                        height: 50,
-                                        color: AppColors.color.grey
-                                            .withOpacity(0.3),
-                                      ),
-                                      Column(
-                                        children: [
-                                          const Text(
-                                            "Available data",
-                                            style: TextStyle(
-                                              fontSize: 12,
-                                              color: Colors.green,
-                                            ),
-                                          ),
-                                          const SizedBox(height: 10),
-                                          Text(
-                                            "${Singleton.instance.internetData[index].availableData} GB",
-                                            style: const TextStyle(
-                                              fontSize: 20,
-                                              color: Colors.green,
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ],
-                                  ),
-                                ],
-                              ),
+                ),
+                Container(
+                  margin: const EdgeInsets.symmetric(vertical: 16),
+                  height: size.height * 0.19,
+                  width: size.width - 32,
+                  child: ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    itemCount: Singleton.instance.internetData.length,
+                    itemBuilder: ((context, index) {
+                      return Column(
+                        children: [
+                          Container(
+                            width: size.width - 32,
+                            height: size.height * 0.19,
+                            margin: const EdgeInsets.only(right: 16),
+                            padding: const EdgeInsets.all(16),
+                            decoration: BoxDecoration(
+                              color: AppColors.color.white,
+                              boxShadow: const [
+                                BoxShadow(
+                                  color: Colors.grey,
+                                  offset: Offset(0.0, 1.0), //(x,y)
+                                  blurRadius: 3.0,
+                                ),
+                              ],
                             ),
-                          ],
-                        );
-                      }),
-                    ),
-                  ),
-                  Container(
-                    width: size.width,
-                    height: size.height * 0.19,
-                    padding: const EdgeInsets.all(16),
-                    decoration: BoxDecoration(
-                      color: AppColors.color.red,
-                      boxShadow: const [
-                        BoxShadow(
-                          color: Colors.grey,
-                          offset: Offset(0.0, 1.0), //(x,y)
-                          blurRadius: 3.0,
-                        ),
-                      ],
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        SizedBox(
-                          width: size.width * 0.50,
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Row(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.baseline,
-                                    textBaseline: TextBaseline.alphabetic,
-                                    children: [
-                                      const SizedBox(width: 20),
-                                      Text(
-                                        "LKR449",
-                                        style: TextStyle(
-                                          fontSize: 18,
-                                          color: AppColors.color.white,
-                                          fontWeight: FontWeight.bold,
-                                        ),
-                                      ),
-                                      const SizedBox(width: 8),
-                                      Text(
-                                        "plan",
-                                        style: TextStyle(
-                                          fontSize: 14,
-                                          color: AppColors.color.white,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                  const SizedBox(height: 6),
-                                  Padding(
-                                    padding: const EdgeInsets.only(left: 10),
-                                    child: Text(
-                                      "expires on 01 jan 2020",
-                                      style: TextStyle(
-                                        fontSize: 12,
-                                        color: AppColors.color.white
-                                            .withOpacity(0.60),
-                                      ),
+                            child: Column(
+                              children: [
+                                Row(
+                                  children: [
+                                    Text(
+                                      Singleton
+                                          .instance.internetData[index].day,
                                     ),
-                                  ),
-                                ],
-                              ),
-                              const SizedBox(height: 20),
-                              Column(
-                                children: [
-                                  Row(
-                                    children: [
-                                      Container(
-                                        width: 5,
-                                        height: 5,
-                                        decoration: BoxDecoration(
-                                          shape: BoxShape.circle,
-                                          color: AppColors.color.white,
-                                        ),
+                                    Text(
+                                      Singleton
+                                          .instance.internetData[index].date,
+                                    ),
+                                    Text(
+                                      Singleton
+                                          .instance.internetData[index].time,
+                                    ),
+                                    const Spacer(),
+                                    CircleAvatar(
+                                      backgroundColor:
+                                          AppColors.color.red.withOpacity(0.3),
+                                      child: Image.asset(
+                                        "assets/icons/calender.png",
+                                        scale: 0.8,
                                       ),
-                                      const SizedBox(width: 10),
-                                      Text(
-                                        "10 GB data per day",
-                                        style: TextStyle(
-                                          fontSize: 11,
-                                          color: AppColors.color.white,
+                                      radius: 16,
+                                    ),
+                                  ],
+                                ),
+                                const SizedBox(height: 4),
+                                const Divider(),
+                                const SizedBox(height: 10),
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceEvenly,
+                                  children: [
+                                    Column(
+                                      children: [
+                                        Text(
+                                          "Total data",
+                                          style: TextStyle(
+                                            fontSize: 12,
+                                            color: AppColors.color.red,
+                                          ),
                                         ),
-                                      ),
-                                    ],
-                                  ),
-                                ],
-                              ),
-                              const SizedBox(height: 10),
-                              Column(
-                                children: [
-                                  Row(
-                                    children: [
-                                      Container(
-                                        width: 5,
-                                        height: 5,
-                                        decoration: BoxDecoration(
-                                          shape: BoxShape.circle,
-                                          color: AppColors.color.white,
+                                        const SizedBox(height: 10),
+                                        Text(
+                                          "${Singleton.instance.internetData[index].totalData} GB",
+                                          style: TextStyle(
+                                            fontSize: 20,
+                                            color: AppColors.color.red,
+                                          ),
                                         ),
-                                      ),
-                                      const SizedBox(width: 10),
-                                      Text(
-                                        "12 PM - 2 PM unlimited data",
-                                        style: TextStyle(
-                                          fontSize: 11,
-                                          color: AppColors.color.white,
+                                      ],
+                                    ),
+                                    Container(
+                                      width: 1,
+                                      height: 50,
+                                      color:
+                                          AppColors.color.grey.withOpacity(0.3),
+                                    ),
+                                    Column(
+                                      children: [
+                                        Text(
+                                          "Data used",
+                                          style: TextStyle(
+                                            fontSize: 12,
+                                            color: AppColors.color.blue,
+                                          ),
                                         ),
-                                      ),
-                                    ],
-                                  ),
-                                ],
-                              ),
-                            ],
+                                        const SizedBox(height: 10),
+                                        Text(
+                                          "${Singleton.instance.internetData[index].dataUsed} GB",
+                                          style: TextStyle(
+                                            fontSize: 20,
+                                            color: AppColors.color.blue,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                    Container(
+                                      width: 1,
+                                      height: 50,
+                                      color:
+                                          AppColors.color.grey.withOpacity(0.3),
+                                    ),
+                                    Column(
+                                      children: [
+                                        const Text(
+                                          "Available data",
+                                          style: TextStyle(
+                                            fontSize: 12,
+                                            color: Colors.green,
+                                          ),
+                                        ),
+                                        const SizedBox(height: 10),
+                                        Text(
+                                          "${Singleton.instance.internetData[index].availableData} GB",
+                                          style: const TextStyle(
+                                            fontSize: 20,
+                                            color: Colors.green,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
                           ),
-                        ),
-
-                        ///
-                        ///
-                        Column(
+                        ],
+                      );
+                    }),
+                  ),
+                ),
+                Container(
+                  width: size.width,
+                  height: size.height * 0.19,
+                  padding: const EdgeInsets.all(16),
+                  decoration: BoxDecoration(
+                    color: AppColors.color.red,
+                    boxShadow: const [
+                      BoxShadow(
+                        color: Colors.grey,
+                        offset: Offset(0.0, 1.0), //(x,y)
+                        blurRadius: 3.0,
+                      ),
+                    ],
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      SizedBox(
+                        width: size.width * 0.50,
+                        child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Image.asset(
-                              "assets/images/sale.png",
-                              width: 70,
-                              height: 50,
-                              scale: 0.8,
-                            ),
-                            Row(
-                              crossAxisAlignment: CrossAxisAlignment.baseline,
-                              textBaseline: TextBaseline.alphabetic,
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text(
-                                  "25+",
-                                  style: TextStyle(
-                                    fontSize: 14,
-                                    color: AppColors.color.white,
-                                    fontWeight: FontWeight.bold,
-                                  ),
+                                Row(
+                                  crossAxisAlignment:
+                                      CrossAxisAlignment.baseline,
+                                  textBaseline: TextBaseline.alphabetic,
+                                  children: [
+                                    const SizedBox(width: 20),
+                                    Text(
+                                      "LKR449",
+                                      style: TextStyle(
+                                        fontSize: 18,
+                                        color: AppColors.color.white,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                    const SizedBox(width: 8),
+                                    Text(
+                                      "plan",
+                                      style: TextStyle(
+                                        fontSize: 14,
+                                        color: AppColors.color.white,
+                                      ),
+                                    ),
+                                  ],
                                 ),
-                                const SizedBox(width: 8),
-                                Text(
-                                  "surprising plans",
-                                  style: TextStyle(
-                                    fontSize: 12,
-                                    color: AppColors.color.white,
+                                const SizedBox(height: 6),
+                                Padding(
+                                  padding: const EdgeInsets.only(left: 10),
+                                  child: Text(
+                                    "expires on 01 jan 2020",
+                                    style: TextStyle(
+                                      fontSize: 12,
+                                      color: AppColors.color.white
+                                          .withOpacity(0.60),
+                                    ),
                                   ),
                                 ),
                               ],
                             ),
-                            TextButton(
-                              style: ButtonStyle(
-                                padding: MaterialStateProperty.all(
-                                  const EdgeInsets.symmetric(
-                                    horizontal: 34,
-                                  ),
+                            const SizedBox(height: 20),
+                            Column(
+                              children: [
+                                Row(
+                                  children: [
+                                    Container(
+                                      width: 5,
+                                      height: 5,
+                                      decoration: BoxDecoration(
+                                        shape: BoxShape.circle,
+                                        color: AppColors.color.white,
+                                      ),
+                                    ),
+                                    const SizedBox(width: 10),
+                                    Text(
+                                      "10 GB data per day",
+                                      style: TextStyle(
+                                        fontSize: 11,
+                                        color: AppColors.color.white,
+                                      ),
+                                    ),
+                                  ],
                                 ),
-                                backgroundColor: MaterialStateProperty.all(
-                                  AppColors.color.white,
+                              ],
+                            ),
+                            const SizedBox(height: 10),
+                            Column(
+                              children: [
+                                Row(
+                                  children: [
+                                    Container(
+                                      width: 5,
+                                      height: 5,
+                                      decoration: BoxDecoration(
+                                        shape: BoxShape.circle,
+                                        color: AppColors.color.white,
+                                      ),
+                                    ),
+                                    const SizedBox(width: 10),
+                                    Text(
+                                      "12 PM - 2 PM unlimited data",
+                                      style: TextStyle(
+                                        fontSize: 11,
+                                        color: AppColors.color.white,
+                                      ),
+                                    ),
+                                  ],
                                 ),
-                                foregroundColor: MaterialStateProperty.all(
-                                  AppColors.color.red,
-                                ),
-                              ),
-                              onPressed: () {},
-                              child: const Text(
-                                "Other Plans",
-                                style: TextStyle(
-                                  fontSize: 12,
-                                ),
-                              ),
+                              ],
                             ),
                           ],
                         ),
-                      ],
-                    ),
+                      ),
+
+                      ///
+                      ///
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Image.asset(
+                            "assets/images/sale.png",
+                            width: 70,
+                            height: 50,
+                            scale: 0.8,
+                          ),
+                          Row(
+                            crossAxisAlignment: CrossAxisAlignment.baseline,
+                            textBaseline: TextBaseline.alphabetic,
+                            children: [
+                              Text(
+                                "25+",
+                                style: TextStyle(
+                                  fontSize: 14,
+                                  color: AppColors.color.white,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              const SizedBox(width: 8),
+                              Text(
+                                "surprising plans",
+                                style: TextStyle(
+                                  fontSize: 12,
+                                  color: AppColors.color.white,
+                                ),
+                              ),
+                            ],
+                          ),
+                          TextButton(
+                            style: ButtonStyle(
+                              padding: MaterialStateProperty.all(
+                                const EdgeInsets.symmetric(
+                                  horizontal: 34,
+                                ),
+                              ),
+                              backgroundColor: MaterialStateProperty.all(
+                                AppColors.color.white,
+                              ),
+                              foregroundColor: MaterialStateProperty.all(
+                                AppColors.color.red,
+                              ),
+                            ),
+                            onPressed: () {},
+                            child: const Text(
+                              "Other Plans",
+                              style: TextStyle(
+                                fontSize: 12,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
                   ),
-                  newOffersCard(size),
-                ],
-              ),
+                ),
+                newOffersCard(size),
+              ],
             ),
           ),
         ],

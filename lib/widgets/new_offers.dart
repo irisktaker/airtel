@@ -12,13 +12,20 @@ class NewOfferCard extends StatefulWidget {
 
 class _NewOfferCardState extends State<NewOfferCard> {
   var localDate = DateTime(2022, 3, 12, 02, 30, 53);
+  Timer? timer;
 
   @override
   void initState() {
     setState(() {
-      Timer.periodic(const Duration(seconds: 1), (Timer t) {
+      timer = Timer.periodic(const Duration(seconds: 1), (Timer t) {
         localDate = DateTime(localDate.year, localDate.month, localDate.day,
             localDate.hour, localDate.minute, localDate.second - 1);
+
+        if (localDate.hour == 0 &&
+            localDate.minute == 0 &&
+            localDate.second == 0) {
+          timer!.cancel();
+        }
       });
     });
     super.initState();

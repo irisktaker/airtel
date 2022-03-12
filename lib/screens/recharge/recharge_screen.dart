@@ -59,7 +59,7 @@ class _RechargeScreenState extends State<RechargeScreen> {
                         },
                       ),
                     ),
-                    newOffersCard(size),
+                    const NewOfferCard(),
                   ],
                 ),
               ),

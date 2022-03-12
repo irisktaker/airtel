@@ -1,6 +1,6 @@
-
 import 'package:flutter/material.dart';
 import '/screens/splash/splash_screen.dart';
+import 'screens/toggle_bar/toggle_bar_screens.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,7 +17,8 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: const SplashScreen(),
+      // home: const SplashScreen(),
+      home: ToggleBarScreens(),
     );
   }
 }

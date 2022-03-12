@@ -490,7 +490,7 @@ class _UsageScreenState extends State<UsageScreen> {
                     ],
                   ),
                 ),
-                newOffersCard(size),
+                const NewOfferCard(),
               ],
             ),
           ),

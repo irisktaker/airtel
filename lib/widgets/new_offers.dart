@@ -11,6 +11,8 @@ class NewOfferCard extends StatefulWidget {
 }
 
 class _NewOfferCardState extends State<NewOfferCard> {
+  bool showOfferTimer = true;
+
   var localDate = DateTime(2022, 3, 12, 02, 30, 53);
   Timer? timer;
 
@@ -25,6 +27,9 @@ class _NewOfferCardState extends State<NewOfferCard> {
             localDate.minute == 0 &&
             localDate.second == 0) {
           timer!.cancel();
+          showOfferTimer = false;
+
+          print(DateTime.now());
         }
       });
     });
@@ -94,7 +99,9 @@ class _NewOfferCardState extends State<NewOfferCard> {
               ),
               const SizedBox(height: 10),
               Text(
-                "${localDate.hour} Hrs ${localDate.minute} Min ${localDate.second} Sec",
+                showOfferTimer
+                    ? "${localDate.hour} Hrs ${localDate.minute} Min ${localDate.second} Sec"
+                    : "Offer has been ended",
                 style: TextStyle(
                   color: AppColors.color.red,
                   fontSize: 20,

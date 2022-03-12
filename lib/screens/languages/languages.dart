@@ -54,6 +54,7 @@ class ShowBottomSheetLanguages {
     }
 
     return showModalBottomSheet(
+      isScrollControlled: true,
       backgroundColor: Colors.transparent,
       enableDrag: true,
       context: context,

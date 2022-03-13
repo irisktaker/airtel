@@ -43,6 +43,7 @@ dependencies:
   circular_chart_flutter: ^0.0.2
   # launcher icons
   flutter_launcher_icons: ^0.9.2
+  table_calendar: ^3.0.4
 
 flutter_icons:
   ios: true

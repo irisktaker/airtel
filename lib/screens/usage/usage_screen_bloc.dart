@@ -17,7 +17,7 @@ class UsageScreenBloc {
       Singleton.instance.internetData[index].totalData *
       100;
 
-  bool showInternetSpeedSectionBorder = false;
+  bool showInternetSpeedSectionBorder = true;
   bool showCalenderAndDataSectionBorder = false;
   bool showPlansSectionBorder = false;
 

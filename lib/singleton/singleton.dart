@@ -102,18 +102,21 @@ class Singleton {
       deviceType: "Mobile",
       deviceName: "iPhone",
       deviceId: "9518 6253 1223 DOXC",
+      isConnect: true,
     ),
     ConnectedDevices(
       image: "assets/images/mac.png",
       deviceType: "Laptop",
       deviceName: "Mac Book",
       deviceId: "6224 9544 1274 DOXC",
+      isConnect: true,
     ),
     ConnectedDevices(
       image: "assets/images/iwatch.png",
       deviceType: "Watch",
       deviceName: "iWatch",
       deviceId: "1265 7584 1264 DOXC",
+      isConnect: false,
     ),
   ];
 

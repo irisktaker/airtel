@@ -3,13 +3,13 @@ class ConnectedDevices {
   String deviceType;
   String deviceName;
   String deviceId;
-  bool isConnect = false;
+  bool isConnect;
 
   ConnectedDevices({
     required this.image,
     required this.deviceType,
     required this.deviceName,
     required this.deviceId,
-    isConnect,
+     required this.isConnect,
   });
 }

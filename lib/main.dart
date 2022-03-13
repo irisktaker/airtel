@@ -1,4 +1,3 @@
-import 'package:airtel/widgets/custom_calendar.dart';
 import 'package:flutter/material.dart';
 import '/screens/splash/splash_screen.dart';
 import 'screens/toggle_bar/toggle_bar_screens.dart';
@@ -17,11 +16,11 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Airtel',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.red,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      // home: const SplashScreen(),
-      home: ToggleBarScreens(),
+      home: const SplashScreen(),
+      // home: const ToggleBarScreens(),
     );
   }
 }

@@ -1,6 +1,7 @@
 import 'package:airtel/screens/usage/usage_screen_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:circular_chart_flutter/circular_chart_flutter.dart';
+import 'package:intl/intl.dart';
 
 import '../../widgets/custom_calendar.dart';
 import '/widgets/new_offers.dart';
@@ -17,16 +18,26 @@ class UsageScreen extends StatefulWidget {
 
 UsageScreenBloc _bloc = UsageScreenBloc();
 
-bool showInternetSpeedSectionBorder = false;
-bool showCalenderAndDataSectionBorder = false;
-bool showPlansSectionBorder = false;
-
-BoxBorder? border = Border.all(
-  color: const Color.fromARGB(255, 15, 211, 15),
-  width: 2,
-);
-
 class _UsageScreenState extends State<UsageScreen> {
+  static DateTime _selectedDate = DateTime.now();
+
+  DateTime? _datePicker() {
+    showDatePicker(
+      context: context,
+      initialDate: DateTime.now(), // must be in rang with firstDate
+      firstDate: DateTime.now(),
+      lastDate: DateTime(2023),
+    ).then((value) {
+      if (value == null) {
+        return 'Pick a date';
+      } else {
+        setState(() {
+          _selectedDate = value;
+        });
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -94,7 +105,8 @@ class _UsageScreenState extends State<UsageScreen> {
     return InkWell(
       onTap: () {
         setState(() {
-          showInternetSpeedSectionBorder = !showInternetSpeedSectionBorder;
+          _bloc.showInternetSpeedSectionBorder =
+              !_bloc.showInternetSpeedSectionBorder;
         });
       },
       child: Container(
@@ -102,7 +114,7 @@ class _UsageScreenState extends State<UsageScreen> {
         height: size.height * 0.45,
         decoration: BoxDecoration(
           color: AppColors.color.white,
-          border: showInternetSpeedSectionBorder ? border : null,
+          border: _bloc.showInternetSpeedSectionBorder ? _bloc.border : null,
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -204,7 +216,8 @@ class _UsageScreenState extends State<UsageScreen> {
     return InkWell(
       onTap: () {
         setState(() {
-          showCalenderAndDataSectionBorder = !showCalenderAndDataSectionBorder;
+          _bloc.showCalenderAndDataSectionBorder =
+              !_bloc.showCalenderAndDataSectionBorder;
         });
       },
       child: Container(
@@ -224,7 +237,9 @@ class _UsageScreenState extends State<UsageScreen> {
                   padding: const EdgeInsets.all(16),
                   decoration: BoxDecoration(
                     color: AppColors.color.white,
-                    border: showCalenderAndDataSectionBorder ? border : null,
+                    border: _bloc.showCalenderAndDataSectionBorder
+                        ? _bloc.border
+                        : null,
                     boxShadow: const [
                       BoxShadow(
                         color: Colors.grey,
@@ -238,38 +253,30 @@ class _UsageScreenState extends State<UsageScreen> {
                       Row(
                         children: [
                           Text(
-                            Singleton.instance.internetData[index].day,
+                            // Singleton.instance.internetData[index].day,
+                            "${DateFormat('EEEE').format(_selectedDate)}, ",
                           ),
                           Text(
-                            Singleton.instance.internetData[index].date,
+                            // Singleton.instance.internetData[index].date,
+                            "${DateFormat.MMMd().format(_selectedDate)} - ",
                           ),
                           Text(
-                            Singleton.instance.internetData[index].time,
+                            //   Singleton.instance.internetData[index].time,
+                            DateFormat('h:mm a').format(DateTime.now()),
                           ),
                           const Spacer(),
                           InkWell(
                             onTap: () {
-                              showDialog(
-                                context: context,
-                                builder: (BuildContext context) {
-                                  return Expanded(
-                                    child: AlertDialog(
-                                      // title: Text('Welcome'),
-                                      content: customCalender(),
-                                      // actions: [
-                                      //   TextButton(
-                                      //     onPressed: () {},
-                                      //     child: Text('CANCEL'),
-                                      //   ),
-                                      //   TextButton(
-                                      //     onPressed: () {},
-                                      //     child: Text('ACCEPT'),
-                                      //   ),
-                                      // ],
-                                    ),
-                                  );
-                                },
-                              );
+                              _datePicker();
+
+                              // showDialog(
+                              //   context: context,
+                              //   builder: (BuildContext context) {
+                              //     return AlertDialog(
+                              //       content: customCalender(),
+                              //     );
+                              //   },
+                              // );
                             },
                             child: CircleAvatar(
                               backgroundColor:
@@ -373,7 +380,7 @@ class _UsageScreenState extends State<UsageScreen> {
     return InkWell(
       onTap: () {
         setState(() {
-          showPlansSectionBorder = !showPlansSectionBorder;
+          _bloc.showPlansSectionBorder = !_bloc.showPlansSectionBorder;
         });
       },
       child: Container(
@@ -382,7 +389,7 @@ class _UsageScreenState extends State<UsageScreen> {
         padding: const EdgeInsets.all(16),
         decoration: BoxDecoration(
           color: AppColors.color.red,
-          border: showPlansSectionBorder ? border : null,
+          border: _bloc.showPlansSectionBorder ? _bloc.border : null,
           boxShadow: const [
             BoxShadow(
               color: Colors.grey,

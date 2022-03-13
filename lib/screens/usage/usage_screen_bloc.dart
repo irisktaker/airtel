@@ -16,4 +16,13 @@ class UsageScreenBloc {
   double availableData = Singleton.instance.internetData[index].availableData /
       Singleton.instance.internetData[index].totalData *
       100;
+
+  bool showInternetSpeedSectionBorder = false;
+  bool showCalenderAndDataSectionBorder = false;
+  bool showPlansSectionBorder = false;
+
+  BoxBorder? border = Border.all(
+    color: const Color.fromARGB(255, 15, 211, 15),
+    width: 2,
+  );
 }
